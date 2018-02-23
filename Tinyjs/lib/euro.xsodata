@@ -1,0 +1,3 @@
+service	{
+	"RBTinyWorld.Tinydb::myview" as "euro" keys generate local "ID";
+	}

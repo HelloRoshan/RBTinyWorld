@@ -1,0 +1,26 @@
+PROCEDURE "RBTinyWorld.Tinydb::createCountry" (
+IN im_country NVARCHAR(100), im_continent NVARCHAR(100),
+OUT ex_error NVARCHAR(100))
+   LANGUAGE SQLSCRIPT AS
+   --SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   --READS SQL DATA AS
+BEGIN
+declare noc integer;
+select count(*) into noc
+	from "RBTinyWorld.Tinydb::Tinyf.world"
+	where "continent"  = im_continent;
+if :noc = 0 then
+	ex_error := 'ERROR: Continent ' || :im_continent ||' does not exist! ';
+else 
+	select count(*) into noc 
+		from "RBTinyWorld.Tinydb::Tinyf.Country"
+		where "name" = im_country;
+	if :noc > 0 then
+		ex_error := 'ERROR: Country ' || :im_country || ' already exists!';
+	else
+		insert into "RBTinyWorld.Tinydb::Tinyf.Country"
+			values (im_country, im_continent);
+	end if;
+end if;
+END;

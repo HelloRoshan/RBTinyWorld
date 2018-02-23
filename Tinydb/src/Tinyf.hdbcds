@@ -1,0 +1,13 @@
+namespace RBTinyWorld.Tinydb;
+
+context Tinyf {
+    entity world {
+        key continent : String(100);
+    }
+
+    /*@@layout{"layoutInfo":{"x":-422,"y":-91.5}}*/
+    entity Country {
+        key name   : String(100);
+            partof : association[0..1] to world;
+    };
+};

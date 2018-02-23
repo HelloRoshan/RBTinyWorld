@@ -1,0 +1,14 @@
+{
+	"welcomeFile": "index.html",
+	"authenticationMethod": "none",
+	"routes": [{ 
+		"source": "^/euro.xsodata/.*$",
+		"destination": "Tinyjs_be" 
+		},{
+			"source": "/(.*)",
+			"localDir": "resources",
+			"replace": {
+				"pathSuffixes": ["index.html"],"vars": ["ui5liburl"]
+				}
+	}]
+}

@@ -1,0 +1,48 @@
+ID: RBTinyWorld
+_schema-version: '2.0'
+description: created by roshan
+version: 0.0.1
+modules:
+  - name: Tinydb
+    type: hdb
+    path: Tinydb
+    requires:
+      - name: hdi-container
+  - name: Tinyjs
+    type: nodejs
+    path: Tinyjs
+    requires:
+      - name: hdi-container
+      - name: Tinydb
+    provides:
+      - name: Tinyjs_api
+        properties:
+          service_url: ${default-url}
+  - name: TinyUI
+    type: html5
+    path: TinyUI
+    provides:
+      - name: TinyUI
+        properties:
+          ui-url: ${default-url}
+    requires:
+      - name: Tinyjs_api
+        group: destinations
+        properties:
+          name: Tinyjs_be
+          url: ~{service_url}
+      - name: ui5-lib
+        properties:
+          ui5liburl: ~{url}
+resources:
+  - name: hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+    type: com.sap.xs.hdi-container
+  - name: ui5-lib
+    type: configuration
+    parameters:
+      ID: 'com.sap.ui5.dist.sapui5-dist-xsa.XSAC_SAPUI5_FESV3:sapui5_fesv3'
+      name: sapui5_fesv3
+      version: "=1.44.18"
+      
