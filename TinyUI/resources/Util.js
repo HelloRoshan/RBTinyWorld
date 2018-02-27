@@ -32,8 +32,8 @@ function openFirstDialog() {
  $.ajax({
  type: "POST",
  //problem with url finding
- url: "country/country.xsjs",
- //url: "/RBTinyWorld/Tinyjs/lib/country/country.xsjs",
+ //url: "country/country.xsjs",
+ url: "https://ec2-54-156-164-210.compute-1.amazonaws.com:51077/country/country.xsjs",
  contentType: "application/json",
  data: insertdata,
  dataType: "json",

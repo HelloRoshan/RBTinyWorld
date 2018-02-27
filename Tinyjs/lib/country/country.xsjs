@@ -1,3 +1,5 @@
+// $.response.headers.set("Access-Control-Allow-Origin", "*");
+// $.response.status = $.net.http.OK;
 function saveCountry(country) {
 	var conn = $.hdb.getConnection();
 	var output = JSON.stringify(country);
@@ -7,17 +9,20 @@ function saveCountry(country) {
 	conn.commit();
 	conn.close();
 	if(result && result.EX_ERROR !== null){
-		return {body: result,
-		status: $.net.http.BAD_REQUEST
+		return {
+			body: result,
+			status: $.net.http.BAD_REQUEST
 		};
 	}
 	else{
-		return {body: output,
+		return {
+			body: output,
 			status: $.net.http.CREATED
 		};
 	}
 }
-var body = $.request.body.asString();
+
+var body = $.request.body.toString();
 var country = JSON.parse(body);
 //validate the inputs
 var output = saveCountry(country);
