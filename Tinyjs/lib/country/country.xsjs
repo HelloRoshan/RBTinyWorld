@@ -1,10 +1,8 @@
-// $.response.headers.set("Access-Control-Allow-Origin", "*");
-// $.response.status = $.net.http.OK;
-function saveCountry(country) {
+function saveCountry(Country) {
 	var conn = $.hdb.getConnection();
-	var output = JSON.stringify(country);
+	var output = JSON.stringify(Country);
 	var fnCreateCountry = conn.loadProcedure("RBTinyWorld.Tinydb::createCountry");
-	var result = fnCreateCountry({IM_COUNTRY: country.name, IM_CONTINENT: country.partof});
+	var result = fnCreateCountry({IM_COUNTRY: Country.name, IM_CONTINENT: Country.partof});
 	
 	conn.commit();
 	conn.close();
@@ -22,10 +20,10 @@ function saveCountry(country) {
 	}
 }
 
-var body = $.request.body.toString();
-var country = JSON.parse(body);
+var body = $.request.body.asString();
+var Country = JSON.parse(body);
 //validate the inputs
-var output = saveCountry(country);
+var output = saveCountry(Country);
 $.response.contentType = "application/json";
 $.response.setBody(output.body);
 $.response.status = output.status;

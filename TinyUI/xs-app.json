@@ -5,13 +5,13 @@
 		"source": "^/euro.xsodata/.*$",
 		"destination": "Tinyjs_be" 
 		},{
+			"source": ".*\\.xsjs",
+			"destination": "Tinyjs_be"
+		},{
 			"source": "/(.*)",
 			"localDir": "resources",
 			"replace": {
 				"pathSuffixes": ["index.html"],"vars": ["ui5liburl"]
-				}
-	},{
-		"source" : ".*\\.xsjs",
-		"destination": "Tinyjs_be"
+		}
 	}]
 }
