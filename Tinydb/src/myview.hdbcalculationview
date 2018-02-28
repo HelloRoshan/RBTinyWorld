@@ -4,8 +4,8 @@
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="RBTinyWorld.Tinydb::Tinyf.Country">
-    <resourceUri>RBTinyWorld.Tinydb::Tinyf.Country</resourceUri>
+  <DataSource id="RBTinyWorld.Tinydb::Tinyf.country">
+    <resourceUri>RBTinyWorld.Tinydb::Tinyf.country</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -20,7 +20,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="RBTinyWorld.Tinydb::Tinyf.Country">
+    <input node="RBTinyWorld.Tinydb::Tinyf.country">
       <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="partof_continent" source="partof.continent"/>
     </input>

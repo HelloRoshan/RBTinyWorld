@@ -14,12 +14,12 @@ if :noc = 0 then
 	ex_error := 'ERROR: Continent ' || :im_continent ||' does not exist! ';
 else 
 	select count(*) into noc 
-		from "RBTinyWorld.Tinydb::Tinyf.Country"
+		from "RBTinyWorld.Tinydb::Tinyf.country"
 		where "name" = im_country;
 	if :noc > 0 then
 		ex_error := 'ERROR: Country ' || :im_country || ' already exists!';
 	else
-		insert into "RBTinyWorld.Tinydb::Tinyf.Country"
+		insert into "RBTinyWorld.Tinydb::Tinyf.country"
 			values (im_country, im_continent);
 	end if;
 end if;

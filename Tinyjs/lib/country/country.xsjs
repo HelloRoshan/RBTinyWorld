@@ -1,8 +1,8 @@
-function saveCountry(Country) {
+function saveCountry(country) {
 	var conn = $.hdb.getConnection();
-	var output = JSON.stringify(Country);
+	var output = JSON.stringify(country);
 	var fnCreateCountry = conn.loadProcedure("RBTinyWorld.Tinydb::createCountry");
-	var result = fnCreateCountry({IM_COUNTRY: Country.name, IM_CONTINENT: Country.partof});
+	var result = fnCreateCountry({IM_COUNTRY: country.name, IM_CONTINENT: country.partof});
 	
 	conn.commit();
 	conn.close();
@@ -21,9 +21,9 @@ function saveCountry(Country) {
 }
 
 var body = $.request.body.asString();
-var Country = JSON.parse(body);
+var country = JSON.parse(body);
 //validate the inputs
-var output = saveCountry(Country);
+var output = saveCountry(country);
 $.response.contentType = "application/json";
 $.response.setBody(output.body);
 $.response.status = output.status;

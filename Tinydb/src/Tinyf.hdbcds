@@ -6,7 +6,7 @@ context Tinyf {
     }
 
     /*@@layout{"layoutInfo":{"x":-422,"y":-91.5}}*/
-    entity Country {
+    entity country {
         key name   : String(100);
             partof : association[0..1] to world;
     };
